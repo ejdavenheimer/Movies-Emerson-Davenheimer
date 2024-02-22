@@ -1,13 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./img/Moviestack_favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="./assets/styles/styles.css">
+    <link rel="shortcut icon" href="../img/Moviestack_favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/styles/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Home</title>
 </head>
+
 <body>
 
+    <div class="bg-purple-50 layout">
+        <header>
+            <div class="flex justify-between bg-black text-white px-6">
+                <div class="flex">
+                    <img class="h-20 absolute left-1" src="../img/Moviestack_isotipo.png" alt="Isotipo de la página">
+                    <img class="h-24" src="../img/Moviestack_logotipo2.png" alt="Logotipo de la página">
+                </div>
+                <nav class="flex gap-4 items-center">
+                    <a href="#" class="border-solid  border-2 border-purple-500 p-2 font-bold">HOME</a>
+                    <a href="./pages/movies.html" class="p-2">MOVIES</a>
+                    <a href="#" class="p-2">FAVS</a>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <div class="flex justify-center items-center my-6 flex-col">
+                <img class="w-3/4"
+                    src="https://static.vecteezy.com/system/resources/previews/002/236/321/non_2x/movie-trendy-banner-vector.jpg"
+                    alt="Banner de la página principal">
+                <p class="leading-6 mt-4 w-3/4">
+                    Sumérgete en el emocionante mundo del cine con nuestra amplia selección de películas de todos los
+                    géneros y épocas. Desde clásicos atemporales hasta los últimos estrenos de taquilla, tenemos algo
+                    para todos los amantes del cine.
+                    <br>
+                    Explora nuestra colección y descubre historias cautivadoras, personajes inolvidables y emociones que
+                    te transportarán a mundos imaginarios. Desde dramas conmovedores hasta emocionantes películas de
+                    acción, desde escalofriantes películas de terror hasta comedias que te harán reír a carcajadas,
+                    estamos seguros de que encontrarás algo que te encantará.
+                </p>
+
+                <p class="mt-12  leading-6 w-3/4">
+                    ¿Tienes algunas películas que ya has visto una y otra vez? ¡Agréguelas a tus favoritas! En nuestra
+                    sección de películas favoritas, puedes guardar tus películas preferidas para acceder fácilmente a
+                    ellas en el futuro. Ya sea que estés buscando inspiración para tu próxima maratón de películas o
+                    simplemente quieras recordar tus clásicos favoritos, esta sección es perfecta para ti.
+                </p>
+
+                <div class="mt-4 w-3/4 flex justify-between">
+                    <img class="w-5/12" src="https://cdnp.kittl.com/a63520d2-24cb-406e-9540-a8c14e3ce771_Kittl-Create-Movie-Title-Design_Tutorial.jpg?auto=compress,format" alt="Imagen call to action (movies)">
+                    <img class="w-5/12" src="https://www.quizexpo.com/wp-content/uploads/2022/01/cover-5-850x491.jpg" alt="Imagen call to action (favs)">
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="bg-black h-14 flex items-center justify-center mt-6">
+                <p class="text-white">MindHub - Cohort N</p>
+            </div>
+        </footer>
+    </div>
 </body>
+
 </html>

@@ -1,0 +1,15 @@
+.layout{
+    font-family: "Raleway", sans-serif;
+}
+#movieTitle{
+    font-family: "Bebas Neue", sans-serif;
+}
+
+#movieDescription{
+    overflow: auto;
+} 
+
+#cardContainer{
+    gap: 15px;
+}
+
