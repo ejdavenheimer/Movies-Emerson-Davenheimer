@@ -20,3 +20,38 @@ dataMovies.forEach(movie => {
 
     cardContainer.appendChild(newCard);
 });
+
+const genres = dataMovies.map (film => film.genres).flat();
+const setGenres = new Set( genres );
+const arrayGenres = (Array.from( setGenres)).sort();
+
+function crearSelectlist( genres ){
+    return `<option value=${genres}>
+                ${genres}     
+            </option>`
+}
+
+const fnReduceGenres = (template, genre) => template + crearSelectlist( genre);
+
+const $selectGenres = document.getElementById('genresMovies');
+$selectGenres.innerHTML = arrayGenres.reduce( fnReduceGenres, "");
+
+const $inputSearch = document.getElementById('inputSearch');
+$inputSearch.addEventListener('input', () => {
+    console.log('input bUSQUEDA:', $inputSearch.value)
+    const peliculasFiltradas = filtrarPeliculasPorNombre(dataMovies, $inputSearch.value);
+
+    imprimirPeliculasFiltradas(peliculasFiltradas);
+})
+
+imprimirPeliculasFiltradas(peliculas, espacio){
+
+}
+
+function filtrarPeliculasPorNombre(peliculas, nombre){
+    return  peliculas.filter( peli => peli.title.toLowerCase().includes(nombre.toLowerCase())).map(peli => peli.title);
+}
+
+console.log( filtrarPeliculasPorNombre(dataMovies, "fas"))
+
+

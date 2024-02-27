@@ -41,6 +41,17 @@
             <div class="bg-purple-800 h-24 mx-24 my-4 flex justify-center items-center">
                 <h2 class="text-5xl text-white">MOVIES</h2>
             </div>
+            <search class="flex gap-5 justify-center">
+                <select class="h-9 p-2" name="genres">
+                    <optgroup id="genresMovies" label="Genre">
+                    </optgroup>
+                </select>
+                <div class="relative w-2/5 flex mb-4 justify-center">
+                    <input id="inputSearch" class="w-full h-9 rounded p-2" type="text" placeholder="Search..."></input>
+                    <i class="fa-solid fa-magnifying-glass absolute  top-2.5 right-1.5"></i>
+                </div>
+            </search>
+
             <div id="cardContainer" class="flex justify-center items-center flex-wrap">
             </div>
         </main>
@@ -54,6 +65,7 @@
 
     <script src="../assets/js/dataMovieStack.js"></script>
     <script src="../assets/js/movies.js"></script>
+    <script src="https://kit.fontawesome.com/63b622224f.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
