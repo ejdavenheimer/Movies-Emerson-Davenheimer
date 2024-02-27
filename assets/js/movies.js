@@ -5,7 +5,7 @@ let color4 = "000000";
 let fontTitulo = "Bebas Neue";
 let fontGeneral = "Raleway";
 
-const cardTemplate = document.getElementById('card');
+const cardTemplate = document.querySelector('.card');
 
 const cardContainer = document.getElementById('cardContainer');
 
@@ -41,12 +41,10 @@ $inputSearch.addEventListener('input', () => {
     console.log('input bUSQUEDA:', $inputSearch.value)
     const peliculasFiltradas = filtrarPeliculasPorNombre(dataMovies, $inputSearch.value);
 
-    imprimirPeliculasFiltradas(peliculasFiltradas);
+    removerPeliculas(peliculas, peliculasFiltradas);
 })
 
-imprimirPeliculasFiltradas(peliculas, espacio){
-
-}
+console.log(cardTemplate)
 
 function filtrarPeliculasPorNombre(peliculas, nombre){
     return  peliculas.filter( peli => peli.title.toLowerCase().includes(nombre.toLowerCase())).map(peli => peli.title);
