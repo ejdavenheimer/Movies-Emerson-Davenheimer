@@ -6,21 +6,30 @@ let fontTitulo = "Bebas Neue";
 let fontGeneral = "Raleway";
 
 const cardTemplate = document.querySelector('.card');
-
 const cardContainer = document.getElementById('cardContainer');
 
-dataMovies.forEach(movie => {
-    const newCard = cardTemplate.cloneNode(true);
-    newCard.style.display = 'block'; 
+mostrarTarjeta(dataMovies);
+function crearTarjeta(movie){
+    return ` 
+            <div class="card w-1/5 h-96 rounded-lg bg-white shadow-md p-4">
+                <img class="movieImage" src="${movie.image}" alt="Movie image">
+                <div class="movie__information">
+                    <h6 class="movieTitle font-bold mt-2 tracking-wider text-lg">${movie.title}</h6>
+                    <p class="movieSubtitle italic mb-2 ">${movie.tagline}</p>
+                    <p class="movieDescription description h-28 text-sm">${movie.overview}</p>
+                </div>
+            </div>`
+}
+function mostrarTarjeta(movies){
+    let template = "";
 
-    newCard.querySelector('#movieImage').src = movie.image;
-    newCard.querySelector('#movieTitle').textContent = movie.title;
-    newCard.querySelector('#movieSubtitle').textContent = movie.tagline;
-    newCard.querySelector('#movieDescription').textContent = movie.overview;
+    for(const peliculaIterada of movies){
+        template += crearTarjeta(peliculaIterada);
+    }
+    this.cardContainer.innerHTML = template;
+}
 
-    cardContainer.appendChild(newCard);
-});
-
+/** Obtener todos los géneros de las películas */
 const genres = dataMovies.map (film => film.genres).flat();
 const setGenres = new Set( genres );
 const arrayGenres = (Array.from( setGenres)).sort();
@@ -36,20 +45,16 @@ const fnReduceGenres = (template, genre) => template + crearSelectlist( genre);
 const $selectGenres = document.getElementById('genresMovies');
 $selectGenres.innerHTML = arrayGenres.reduce( fnReduceGenres, "");
 
+
 const $inputSearch = document.getElementById('inputSearch');
 $inputSearch.addEventListener('input', () => {
     console.log('input bUSQUEDA:', $inputSearch.value)
     const peliculasFiltradas = filtrarPeliculasPorNombre(dataMovies, $inputSearch.value);
 
-    removerPeliculas(peliculas, peliculasFiltradas);
+    mostrarTarjeta(peliculasFiltradas);
 })
 
-console.log(cardTemplate)
 
 function filtrarPeliculasPorNombre(peliculas, nombre){
-    return  peliculas.filter( peli => peli.title.toLowerCase().includes(nombre.toLowerCase())).map(peli => peli.title);
+    return  peliculas.filter( peli => peli.title.toLowerCase().includes(nombre.toLowerCase()));
 }
-
-console.log( filtrarPeliculasPorNombre(dataMovies, "fas"))
-
-
