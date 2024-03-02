@@ -61,3 +61,12 @@ $layoutDetalles.innerHTML =
 
 
         /**LLEVAR ESTO A UNA RAMA DE SPRIN2 Y LUEGO A DEV */
+
+
+        /** FUSIONAR RAMAS: 
+         * 1- Me pongo en la rama que quiero incorporar los cambios con git switch RAMA
+         * 2- git merge LaRamaQueNosQueremosTraer */
+
+        /** CREAR RAMA REMOTA
+         * - git push origin nombreDeRama
+         */
