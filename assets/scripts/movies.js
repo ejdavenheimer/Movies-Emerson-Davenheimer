@@ -22,7 +22,7 @@ fetch( $url, init)
         const cardTemplate = document.querySelector('.card');
         const cardContainer = document.getElementById('cardContainer');
 
-        mostrarTarjeta(dataMovies);
+        mostrarTarjeta(dataMovies, cardContainer);
 
         /** Obtener todos los géneros de las películas */
         const genres = dataMovies.map(film => film.genres).flat();
@@ -39,7 +39,7 @@ fetch( $url, init)
         $inputSearch.addEventListener('input', () => {
             const peliculasFiltradasGenero = filtrarPeliculasPorNombre(dataMovies, $inputSearch.value);
             const peliculaFiltradasNombre = filtrarPeliculasPorGenero(peliculasFiltradasGenero, $selectGenres.value);
-            mostrarTarjeta(peliculaFiltradasNombre);
+            mostrarTarjeta(peliculaFiltradasNombre, cardContainer);
         })
 
         /** Filtrar por género */
@@ -47,7 +47,41 @@ fetch( $url, init)
             const peliculaFiltradasNombre = filtrarPeliculasPorGenero(dataMovies, $selectGenres.value);
 
             const peliculasFiltradasGenero = filtrarPeliculasPorNombre(peliculaFiltradasNombre, $inputSearch.value);
-            mostrarTarjeta(peliculasFiltradasGenero);
+            mostrarTarjeta(peliculasFiltradasGenero, cardContainer);
         })
+
+
+        /** Evento para agregar favorito */
+        const arrayFavoritos = [];
+        cardContainer.addEventListener('click', (event) => {
+            if (event.target.classList.contains('boton_fav')) {
+                const boton = event.target;
+                const idPelicula = boton.dataset.id;
+                
+                if (boton.classList.contains('fa-regular')) {
+                    boton.classList.remove('fa-regular');
+                    boton.classList.add('fa-solid');
+                    arrayFavoritos.push(idPelicula);
+                } else {
+                    boton.classList.remove('fa-solid');
+                    boton.classList.add('fa-regular');
+                    arrayFavoritos.splice(arrayFavoritos.indexOf(idPelicula), 1);
+                }
+            }
+
+            localStorage.setItem('arrayFavoritos', JSON.stringify(arrayFavoritos));
+
+            const arrayFavoritosLocal = JSON.parse(localStorage.getItem('arrayFavoritos'));
+
+            // Filtrar los objetos en dataMovies que tienen el mismo ID que los elementos en arrayFavoritosLocal
+            const peliculasFavoritas = dataMovies.filter(peli => arrayFavoritosLocal.includes(peli.id));
+
+            console.log(peliculasFavoritas);
+
+            const $containerFavoritos = document.getElementById('container_favoritos');
+            console.log($containerFavoritos);
+            mostrarTarjeta(peliculasFavoritas, $containerFavoritos);
+        });
+
     })
     .catch( error => console.log(error))
