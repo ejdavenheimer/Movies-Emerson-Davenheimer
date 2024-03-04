@@ -5,32 +5,49 @@ import {
     filtrarPeliculasPorGenero
 } from "./module/funciones.js";
 
-const cardTemplate = document.querySelector('.card');
-const cardContainer = document.getElementById('cardContainer');
+const $url = "https://moviestack.onrender.com/api/movies";
+const init = {
+    method: "GET",
+    headers: {
+        "x-api-key" : "0ff70d54-dc0b-4262-9c3d-776cb0f34dbd"
+    }
+}
 
-mostrarTarjeta(dataMovies);
+let dataMovies = " ";
+fetch( $url, init)
+    .then( response => response.json())
+    .then( datosRespuesta => {
+        dataMovies = datosRespuesta.movies;
 
-/** Obtener todos los géneros de las películas */
-const genres = dataMovies.map(film => film.genres).flat();
-const setGenres = new Set(genres);
-const arrayGenres = (Array.from(setGenres)).sort();
+        const cardTemplate = document.querySelector('.card');
+        const cardContainer = document.getElementById('cardContainer');
 
-const fnReduceGenres = (template, genre) => template + crearSelectlist(genre);
+        mostrarTarjeta(dataMovies);
 
-const $selectGenres = document.getElementById('genresMovies');
-$selectGenres.innerHTML = arrayGenres.reduce(fnReduceGenres, "");
+        /** Obtener todos los géneros de las películas */
+        const genres = dataMovies.map(film => film.genres).flat();
+        const setGenres = new Set(genres);
+        const arrayGenres = (Array.from(setGenres)).sort();
+        arrayGenres.unshift('Genres');
 
-const $inputSearch = document.getElementById('inputSearch');
-$inputSearch.addEventListener('input', () => {
-    const peliculasFiltradasGenero = filtrarPeliculasPorNombre(dataMovies, $inputSearch.value);
-    const peliculaFiltradasNombre = filtrarPeliculasPorGenero(peliculasFiltradasGenero, $selectGenres.value);
-    mostrarTarjeta(peliculaFiltradasNombre);
-})
+        const fnReduceGenres = (template, genre) => template + crearSelectlist(genre);
 
-/** Filtrar por género */
-$selectGenres.addEventListener('change', () => {
-    const peliculaFiltradasNombre = filtrarPeliculasPorGenero(dataMovies, $selectGenres.value);
+        const $selectGenres = document.getElementById('genresMovies');
+        $selectGenres.innerHTML = arrayGenres.reduce(fnReduceGenres, "");
 
-    const peliculasFiltradasGenero = filtrarPeliculasPorNombre(peliculaFiltradasNombre, $inputSearch.value);
-    mostrarTarjeta(peliculasFiltradasGenero);
-})
+        const $inputSearch = document.getElementById('inputSearch');
+        $inputSearch.addEventListener('input', () => {
+            const peliculasFiltradasGenero = filtrarPeliculasPorNombre(dataMovies, $inputSearch.value);
+            const peliculaFiltradasNombre = filtrarPeliculasPorGenero(peliculasFiltradasGenero, $selectGenres.value);
+            mostrarTarjeta(peliculaFiltradasNombre);
+        })
+
+        /** Filtrar por género */
+        $selectGenres.addEventListener('change', () => {
+            const peliculaFiltradasNombre = filtrarPeliculasPorGenero(dataMovies, $selectGenres.value);
+
+            const peliculasFiltradasGenero = filtrarPeliculasPorNombre(peliculaFiltradasNombre, $inputSearch.value);
+            mostrarTarjeta(peliculasFiltradasGenero);
+        })
+    })
+    .catch( error => console.log(error))

@@ -1,7 +1,7 @@
 export function crearTarjeta(movie){
     return ` 
             <div class="card w-1/5 h-96 rounded-lg bg-white shadow-md p-4">
-                <img class="movieImage" src="${movie.image}" alt="Movie image">
+                <img class="movieImage" src="https://moviestack.onrender.com/static/${movie.image}" alt="Movie image">
                 <div class="movie__information">
                     <a href="../../pages/movieData.html?id=${movie.id}" class="movieTitle font-bold mt-2 tracking-wider text-lg">${movie.title}</a>
                     <p class="movieSubtitle italic mb-2 ">${movie.tagline}</p>
@@ -34,6 +34,5 @@ export function filtrarPeliculasPorNombre(peliculas, nombre){
 
 export function filtrarPeliculasPorGenero(peliculas, genero){
     return peliculas.filter(peli => peli.genres.includes(genero));
-
 }
 
