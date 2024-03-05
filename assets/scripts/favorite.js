@@ -20,9 +20,21 @@ fetch( $url, init)
 
         const peliculasFavoritas = dataMovies.filter(peli => arrayFavoritosLocal.includes(peli.id));
 
-        const arrayPeliculasFavoritas = document.getElementById('favContainer');
+        const divPeliculasFavoritas = document.getElementById('favContainer');
 
-        mostrarTarjeta(peliculasFavoritas, arrayPeliculasFavoritas, 'favoritas');
+        mostrarTarjeta(peliculasFavoritas, divPeliculasFavoritas, 'favoritas');
+
+        divPeliculasFavoritas.addEventListener('click', (e) => {
+            if (e.target.classList.contains('boton_fav')) {
+
+                console.log(boton);
+                    arrayFavoritos.splice(arrayFavoritos.indexOf(idPelicula), 1);
+                
+            }
+
+            localStorage.setItem('arrayFavoritos', JSON.stringify(arrayFavoritos));
+
+        });
 
     })
     .catch( error => console.log(error))
