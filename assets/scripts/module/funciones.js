@@ -1,6 +1,6 @@
 export function crearTarjeta(movie){
     return ` 
-            <div class="card w-1/5 h-96 rounded-lg bg-white relative shadow-md p-4">
+            <div class="card w-8/12 md:w-3/12 lg:w-1/5 md:h-96 rounded-lg bg-white relative shadow-md p-4">
                 <i data-id="${movie.id}" class="boton_fav fa-regular fa-heart fa-xl absolute right-1 bottom-4" style="color: #f82020;"></i>
                 <img class="movieImage" src="https://moviestack.onrender.com/static/${movie.image}" alt="Movie image">
                 <div class="movie__information">
