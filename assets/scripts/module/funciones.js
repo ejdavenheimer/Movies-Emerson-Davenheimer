@@ -1,5 +1,16 @@
-export function crearTarjeta(movie){
-    return ` 
+export function crearTarjeta(movie, espacio){
+    if(espacio === 'favoritas'){
+        return ` 
+            <div class="card w-8/12 md:w-3/12 lg:w-1/5 md:h-96 rounded-lg bg-white relative shadow-md p-4">
+                <img class="movieImage" src="https://moviestack.onrender.com/static/${movie.image}" alt="Movie image">
+                <div class="movie__information">
+                    <a href="../../pages/movieData.html?id=${movie.id}" class="movieTitle font-bold mt-2 tracking-wider text-lg">${movie.title}</a>
+                    <p class="movieSubtitle italic mb-2 ">${movie.tagline}</p>
+                    <p class="movieDescription description h-28 text-sm">${movie.overview}</p>
+                </div>
+            </div>`
+    }else{
+        return ` 
             <div class="card w-8/12 md:w-3/12 lg:w-1/5 md:h-96 rounded-lg bg-white relative shadow-md p-4">
                 <i data-id="${movie.id}" class="boton_fav fa-regular fa-heart fa-xl absolute right-1 bottom-4" style="color: #f82020;"></i>
                 <img class="movieImage" src="https://moviestack.onrender.com/static/${movie.image}" alt="Movie image">
@@ -9,13 +20,14 @@ export function crearTarjeta(movie){
                     <p class="movieDescription description h-28 text-sm">${movie.overview}</p>
                 </div>
             </div>`
+    }
 }
 
 export function mostrarTarjeta(movies, contenedor, espacio){
     let template = "";
 
     for(const peliculaIterada of movies){
-        template += crearTarjeta(peliculaIterada);
+        template += crearTarjeta(peliculaIterada, espacio);
     }
     if(movies.length == 0){
         if(espacio === 'favoritas'){
