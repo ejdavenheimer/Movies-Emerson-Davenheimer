@@ -9,7 +9,7 @@
     overflow: auto;
 } 
 
-#cardContainer{
+#cardContainer, #favContainer{
     gap: 15px;
 }
 

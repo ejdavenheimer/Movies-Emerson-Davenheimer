@@ -24,37 +24,15 @@
                 <nav class="flex gap-4 items-center">
                     <a href="../index.html" class="p-2">HOME</a>
                     <a href="#" class="border-solid  border-2 border-purple-500 p-2 font-bold">MOVIES</a>
-                    <a href="./favorites.html" class="p-2">FAVS</a>
+                    <a href="#" class="p-2">FAVS</a>
                 </nav>
             </div>
         </header>
         <main>
-            <div class="card w-1/5 h-96 rounded-lg bg-white shadow-md p-4 hidden">
-                <img class="movieImage" src=" " alt="Movie image">
-                <div class="movie__information">
-                    <h6 class="movieTitle font-bold mt-2 tracking-wider text-lg">Title</h6>
-                    <p class="movieSubtitle italic mb-2 ">Tagline</p>
-                    <p class="movieDescription description h-28 text-sm">Description</p>
-                </div>
-            </div>
-            
-            <div class="bg-purple-800 h-24 mx-24 my-4 flex justify-center items-center">
-                <h2 class="text-5xl text-white">MOVIES</h2>
-            </div>
-            <search class="flex gap-5 justify-center">
-                <select id="genresMovies" class="h-9 p-2" name="genres">
-                    
-                </select>
-                <div class="relative w-2/5 flex mb-4 justify-center">
-                    <input id="inputSearch" class="w-full h-9 rounded p-2" type="text" placeholder="Search...">
-                    <i class="fa-solid fa-magnifying-glass absolute  top-2.5 right-1.5"></i>
-                </div>
-            </search>
-
-            <div id="cardContainer" class="flex justify-center items-center flex-wrap">
+            <a class="mt-20 border-b-2 border-purple-500 border-solid" href="./movies.html">Back</a>
+            <div id="layout_detalles" class="flex gap-12 justify-center">
             </div>
         </main>
-        
         <footer>
             <div class="bg-black h-14 flex items-center justify-center mt-6">
                 <p class="text-white">MindHub - Cohort N</p>
@@ -62,9 +40,8 @@
         </footer>
     </div>
     
-    <script type="module" src="../assets/scripts/movies.js"></script>
+    <script type="module" src="../assets/scripts/detalle.js"></script>
     <script src="https://kit.fontawesome.com/63b622224f.js" crossorigin="anonymous"></script>
-    <script src="../assets/scripts/favorite.js"></script>
 </body>
 
 </html>
