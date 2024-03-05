@@ -19,7 +19,6 @@ const idPelicula = urlParamPelicula.get('id');
 console.log(idPelicula);
 
 const peliculaSeleccionada = dataMovies.find( pelicula => pelicula.id == idPelicula);
-console.log(peliculaSeleccionada);
 
 const $layoutDetalles = document.getElementById('layout_detalles');
 $layoutDetalles.innerHTML = 
@@ -72,32 +71,3 @@ $layoutDetalles.innerHTML =
         
     })
     .catch( error => console.log(error))
-
-
-        /** Cambiar evento de la búsqueda de peli para que solo se active al tocar la lupa */
-
-        /** Filtrar por género y nombre 
-         * 
-         * LISTO, PERO HACE FALTA QUE EN LA PRIMERA CARGA DE LA PÁGINA NO FILTRE NADA AÚN, PORQUE QUEDA FILTRADO 
-         * EL GÉNERO DE LA PELI DESDE EL ARRANQUE
-        */
-
-        /** FALTA CAMBIAR EL DISEÑO */
-
-        /**LLEVAR ESTO A UNA RAMA DE SPRIN2 Y LUEGO A DEV */
-
-
-        /** FUSIONAR RAMAS: 
-         * 1- Me pongo en la rama que quiero incorporar los cambios con git switch RAMA
-         * 2- git merge LaRamaQueNosQueremosTraer */
-
-        /** CREAR RAMA REMOTA
-         * - git push origin nombreDeRama
-         */
-
-        /** let color1 = "#6D38E0";
-            let color2 = "D2CCFF";
-            let color3 = "FFFFFF";
-            let color4 = "000000";
-            let fontTitulo = "Bebas Neue";
-            let fontGeneral = "Raleway"; */

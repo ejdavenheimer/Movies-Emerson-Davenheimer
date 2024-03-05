@@ -11,14 +11,19 @@ export function crearTarjeta(movie){
             </div>`
 }
 
-export function mostrarTarjeta(movies, contenedor){
+export function mostrarTarjeta(movies, contenedor, espacio){
     let template = "";
 
     for(const peliculaIterada of movies){
         template += crearTarjeta(peliculaIterada);
     }
     if(movies.length == 0){
-        template = `<h2 class="h-72 flex items-center text-xl">The specified movie could not be found.</h2>`;
+        if(espacio === 'favoritas'){
+            template = `<h2 class="h-72 flex items-center text-xl">There are no movies added to favorites.</h2>`;
+        } else{
+            template = `<h2 class="h-72 flex items-center text-xl">The specified movie could not be found.</h2>`;
+        }
+        
     }
     contenedor.innerHTML = template;
 }
@@ -34,6 +39,10 @@ export function filtrarPeliculasPorNombre(peliculas, nombre){
 }
 
 export function filtrarPeliculasPorGenero(peliculas, genero){
-    return peliculas.filter(peli => peli.genres.includes(genero));
+    if(genero === 'Genres'){
+        return peliculas;
+    } else{
+        return peliculas.filter(peli => peli.genres.includes(genero));
+    }
 }
 

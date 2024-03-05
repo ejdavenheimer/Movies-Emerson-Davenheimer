@@ -19,12 +19,10 @@ fetch( $url, init)
     .then( datosRespuesta => {
         dataMovies = datosRespuesta.movies;
 
-        const cardTemplate = document.querySelector('.card');
         const cardContainer = document.getElementById('cardContainer');
 
         mostrarTarjeta(dataMovies, cardContainer);
 
-        /** Obtener todos los géneros de las películas */
         const genres = dataMovies.map(film => film.genres).flat();
         const setGenres = new Set(genres);
         const arrayGenres = (Array.from(setGenres)).sort();
@@ -50,7 +48,6 @@ fetch( $url, init)
             mostrarTarjeta(peliculasFiltradasGenero, cardContainer);
         })
 
-
         /** Evento para agregar favorito */
         const arrayFavoritos = [];
         cardContainer.addEventListener('click', (event) => {
@@ -71,16 +68,6 @@ fetch( $url, init)
 
             localStorage.setItem('arrayFavoritos', JSON.stringify(arrayFavoritos));
 
-            const arrayFavoritosLocal = JSON.parse(localStorage.getItem('arrayFavoritos'));
-
-            // Filtrar los objetos en dataMovies que tienen el mismo ID que los elementos en arrayFavoritosLocal
-            const peliculasFavoritas = dataMovies.filter(peli => arrayFavoritosLocal.includes(peli.id));
-
-            console.log(peliculasFavoritas);
-
-            const $containerFavoritos = document.getElementById('container_favoritos');
-            console.log($containerFavoritos);
-            mostrarTarjeta(peliculasFavoritas, $containerFavoritos);
         });
 
     })
